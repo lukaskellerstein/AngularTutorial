@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" #testForm="ngForm">
+
+  <div>
+    <label>Name :</label>
+    <input type="text" id="name" name="name" [(ngModel)]="myName" #name="ngModel" required/>
+    <div [hidden]="name.pristine || name.valid">Name must be a valid</div>
+  </div>
+
+  <div>
+    <label>Email :</label>
+    <input type="email" id="email" name="email" [(ngModel)]="myEmail" #email="ngModel" required/>
+    <div [hidden]="email.pristine || email.valid">Email must be a valid</div>
+  </div>
+
+  <button type="submit" [disabled]="!testForm.form.valid">SEND</button> 
+
+</form>

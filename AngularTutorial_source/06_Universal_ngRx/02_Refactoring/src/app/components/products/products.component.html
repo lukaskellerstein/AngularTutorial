@@ -1,0 +1,6 @@
+<div>
+  <app-product-list [items]="items$ | async" (onSelect)="selectProduct($event)" ></app-product-list>
+</div>
+<div *ngIf="(selectedItem$ | async)">
+  <app-product-detail [item]="selectedItem$ | async" (onDelete)="deleteProduct($event)" (onSave)="updateProduct($event)"></app-product-detail>
+</div>

@@ -1,0 +1,19 @@
+<div *ngIf="item && !isEditMode">
+  <div>{{item.id}}</div>
+  <div>{{item.name}}</div>
+  <div>{{item.state}}</div>
+  <div>{{item.category}}</div>
+  <div>{{item.price}}</div>
+</div>
+
+<div *ngIf="item && isEditMode">
+  <input type="text" [(ngModel)]="item.id" />
+  <input type="text" [(ngModel)]="item.name" />
+  <input type="text" [(ngModel)]="item.state" />
+  <input type="text" [(ngModel)]="item.category" />
+  <input type="text" [(ngModel)]="item.price" />
+</div>
+
+<button *ngIf="!isEditMode" (click)="delete()">Delete</button>
+<button *ngIf="!isEditMode" (click)="edit()">Edit</button>
+<button *ngIf="isEditMode" (click)="save()">Save</button>

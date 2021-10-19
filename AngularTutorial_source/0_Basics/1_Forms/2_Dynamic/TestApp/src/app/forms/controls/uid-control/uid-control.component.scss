@@ -1,0 +1,70 @@
+.section {
+    margin: 30px 0;
+    position: relative;
+}
+.in-row-inputs {
+    display: flex;
+
+    vsui-input,
+    .in-row-item {
+        flex: 1;
+        margin-right: 20px;
+
+        &.margin-up {
+            margin-top: -3px;
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    &.margin-top {
+        margin-top: 30px;
+    }
+
+    &.headers-row {
+        margin-top: 15px;
+    }
+
+    &.single {
+        display: block;
+
+        .half-width-input {
+            width: 48%;
+            display: block;
+        }
+    }
+}
+
+.submit-button {
+    margin-left: 20px;
+}
+.btn-text {
+    font-size: 13px;
+}
+.additional-row {
+    display: flex;
+    ::ng-deep {
+        > * {
+            flex: 1 1 auto;
+        }
+        .delete-row-button {
+            flex: 0 0 auto;
+            margin-top: 30px;
+        }
+    }
+    &+.additional-row {
+        border-top: 1px solid var(--gray-200);
+        padding-top: 6px;
+    }
+}
+.delete-row-button {
+    color: var(--gray-600);
+    padding: 8px 16px;
+    transition: .2s all;
+    &:hover {
+        cursor: pointer;
+        color: var(--primary);
+    }
+}

@@ -1,0 +1,9 @@
+
+
+<ng-container *ngIf="service.products">
+
+    <app-product-list [products]="service.products" (selectProduct)="selectProduct($event)"></app-product-list>
+
+    <app-product-detail #detail [product]="service.selectProduct"></app-product-detail>
+
+</ng-container>

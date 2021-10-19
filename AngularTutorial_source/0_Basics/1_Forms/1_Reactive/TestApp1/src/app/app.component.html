@@ -1,0 +1,95 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="testForm">
+  <div>
+    <label>Name:</label> <input type="text" formControlName="name" />
+    <div
+      [hidden]="
+        !testForm.controls['name'].errors || testForm.controls['name'].pristine
+      "
+    >
+      Name must be a valid
+    </div>
+  </div>
+
+  <div>
+    <label>Email:</label> <input type="email" formControlName="email" />
+    <div
+      [hidden]="
+        !testForm.controls['email'].errors ||
+        testForm.controls['email'].pristine
+      "
+    >
+      Email must be a valid
+    </div>
+  </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label> Street: <input type="text" formControlName="street" /> </label>
+
+    <label> City: <input type="text" formControlName="city" /> </label>
+
+    <label> State: <input type="text" formControlName="state" /> </label>
+
+    <label> Zip Code: <input type="text" formControlName="zip" /> </label>
+
+    <button (click)="addNewPhone()">Add phone</button>
+
+    <div formArrayName="phones">
+      <ng-container *ngFor="let header of phonesForm.controls; let i = index">
+        <div [formGroupName]="i">
+          <input type="text" formControlName="value" />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!--
+    <select matNativeControl required>
+      <option value="http">Http</option>
+      <option value="tcp">Tcp</option>
+    </select>
+
+    <mat-select
+      placeholder="Select HealthCheck Type"
+      [(ngModel)]="selectedHeatlhCheck"
+      name="healthcheck"
+    >
+      <mat-option *ngFor="let hck of selectHealthcheckData" [value]="hck.id">
+        {{ hck.text }}
+      </mat-option>
+    </mat-select>
+  -->
+
+  <div formGroupName="healthCheck">
+    <select
+      formControlName="select"
+      name="healthcheck"
+      id="healthcheck"
+      [(ngModel)]="selectedHealthCheck"
+    >
+      <option *ngFor="let hck of selectHealthcheckData" [value]="hck.id">{{
+        hck.text
+      }}</option>
+    </select>
+
+    <ng-container *ngIf="selectedHealthCheck === 'http'">
+      <div formGroupName="httpHealthCheck">
+        <label> Url: <input type="text" formControlName="url" /> </label>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="selectedHealthCheck === 'tcp'">
+      <div formGroupName="tcpHealthCheck">
+        <label>
+          Send Payload: <input type="text" formControlName="send_payload" />
+        </label>
+        <label>
+          Extended Response:
+          <input type="text" formControlName="extended_response" />
+        </label>
+      </div>
+    </ng-container>
+  </div>
+
+  <button type="submit" [disabled]="!testForm.valid">SEND</button>
+</form>

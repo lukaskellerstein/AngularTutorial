@@ -1,0 +1,8 @@
+<ul style="list-style-type:none">
+
+  <li *ngFor="let item of items"
+    (click)="selectProduct(item.id)">{{item.name}}</li>
+
+</ul>
+
+{{runChangeDetection}}

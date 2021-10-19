@@ -1,0 +1,4 @@
+
+# Steps 
+
+`ng new TestNgApp`

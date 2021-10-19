@@ -1,0 +1,3 @@
+<form [formGroup]="formGroup" novalidate class="form">
+    <ng-container *ngFor="let item of fields" vsStellarDynamicField [config]="item"></ng-container>
+</form>

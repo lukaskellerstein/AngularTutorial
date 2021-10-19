@@ -1,0 +1,10 @@
+<button (click)="setData()">CLICK TO START</button>
+<button (click)="setData2()">CLICK TO START - CHANGE VALUES</button>
+
+<ng-container *ngIf="lukas">
+  <app-normal [name]="lukas"></app-normal>
+</ng-container>
+
+<ng-container *ngIf="adam">
+  <app-on-push [name]="adam"></app-on-push>
+</ng-container>
